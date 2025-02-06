@@ -108,15 +108,15 @@ jobs:
           for file in $(find ./values -type f -name '*.yaml'); do
             ENV=$(yq e '.ENV' $file)
             if [ "$ENV" = "${{ needs.build.outputs.env }}" ]; then
-              yq e -i '.API.tag = strenv(IMAGE)' $file
+              yq e -i '.API.image.tag = strenv(IMAGE)' $file
             fi
           done
       
       - name: Update repository
         working-directory: ${{ needs.build.outputs.path_repo }}
         run: |-
-          git config --global user.email "support@dependabot.com"
-          git config --global user.name "dependabot[bot]"
+          git config --global user.email "most@hpktechnology.com"
+          git config --global user.name "Most"
           git add .
           git commit -am "release: ${{ env.IMAGE_NAME }} env: ${{ needs.build.outputs.env }} version: ${{ needs.build.outputs.image_tag }}"
           git push origin main
