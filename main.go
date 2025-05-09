@@ -34,7 +34,7 @@ func validateAPIKey() gin.HandlerFunc {
 }
 
 func main() {
-	fmt.Println("Testing version:1.0.2")
+	fmt.Println("Testing version:1.0.3")
 	fmt.Println("Starting server...")
 	fmt.Println("version", os.Getenv("VERSION"))
 	r := gin.Default()
